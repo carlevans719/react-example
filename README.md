@@ -84,7 +84,7 @@ import React from 'react'
 function CatImage () {
   return (
     <div className="cat-image">
-      <img src="https://placekitten.com/250/250" />
+      <img src="https://placekitten.com/1000/1500" />
     </div>
   )
 }
@@ -255,7 +255,7 @@ import './CatImage.css'
 class CatImage extends Component {
   // Member (instance) variable called state
   state: {
-    src: 'https://placekitten.com/250/250'
+    src: 'https://placekitten.com/1000/1500'
   }
 
   render () {
@@ -281,11 +281,11 @@ Consider the following component:
 
 ```jsx
 function CatWrapper () {
-  return <CatImage image="http://example.com" />
+  return <CatImage image="https://picsum.photos/1000/1500/?gravity=east" />
 }
 ```
 
-To access the value of `image` ("http://example.com") inside `<CatImage>`, modify it as follows:
+To access the value of `image` ("https://picsum.photos/1000/1500/?gravity=east") inside `<CatImage>`, modify it as follows:
 
 ```jsx
 class CatImage extends Component {
@@ -303,7 +303,7 @@ class CatImage extends Component {
 
 ## Logic
 
-Following on from the above example, we could toggle between placekitten and example.com onclick by changing CatImage as follows:
+Following on from the above example, we could toggle between placekitten.com and picsum.photos onclick by changing CatImage as follows:
 
 ```jsx
 class CatImage extends Component {
@@ -311,7 +311,7 @@ class CatImage extends Component {
     super(props, context)
 
     this.state = {
-      src: 'https://placekitten.com/250/250',
+      src: 'https://placekitten.com/1000/1500',
       usingPropSrc: false
     }
   }
