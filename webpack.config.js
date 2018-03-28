@@ -37,5 +37,10 @@ module.exports = {
         loader: 'css-loader'       // and the css-loader to process
       }]
     }]
+  },
+
+  // To resolve .jsx and .css files!
+  resolve: {
+    extensions: ['.js', '.jsx', '.css']
   }
 }

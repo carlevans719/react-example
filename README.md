@@ -54,7 +54,7 @@ Add the app boilerplate to index.js:
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import CatImage from './components/CatImage.jsx'
+import CatImage from './components/CatImage'
 
 ReactDOM.render(<CatImage />, document.getElementById('app'))
 ```
@@ -62,7 +62,7 @@ ReactDOM.render(<CatImage />, document.getElementById('app'))
 There are a few things going on here:
 
 - we import React and ReactDOM from their respective packages
-- we import one of our own react components from ./components/CatImage.jsx
+- we import one of our own react components from ./components/CatImage
 - we grab the `<div id="app">` from the DOM and render our component into it
 
 Notice the JSX syntax in that final step. Also note that this is the first and, most likely, last time we'll be interacting directly with the DOM.
@@ -73,10 +73,10 @@ Add the packages referenced above:
 
 ### Add the CatImage component
 
-Make the components folder and the CatImage file:
-`mkdir src/components && touch src/components/CatImage.jsx`
+Make the components folder and the CatImage files:
+`mkdir -p src/components/CatImage && touch src/components/CatImage/index.jsx`
 
-Add the code for the CatImage component:
+Add the code for the CatImage component to index.jsx:
 
 ```jsx
 import React from 'react'
@@ -164,6 +164,11 @@ module.exports = {
         loader: 'babel-loader'     // Use the babel-loader to process
       }]
     }]
+  },
+
+  // To resolve .jsx files!
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 }
 ```
@@ -201,10 +206,12 @@ Have a look inside `<div id="app">`.
 
 There are two steps:
 
-- define the rules in webpack.config.js
+- update webpack.config.js
 - import the css where it is needed
 
 ### webpack.config.js
+
+Add a rule to rules:
 
 ```js
 {
@@ -218,6 +225,14 @@ There are two steps:
 }
 ```
 
+Add the .css extension to extensions:
+
+```jsx
+resolve: {
+  extensions: ['.js', '.jsx', '.css']
+}
+```
+
 Install the packages:
 `npm i --save-dev style-loader css-loader`
 
@@ -226,11 +241,11 @@ Given the following folder structure:
 ```shell
 components/
   CatImage/
-  | CatImage.jsx
+  | index.jsx
   | CatImage.css
 ```
 
-Change the top of CatImage.jsx to the following:
+Change the top of index.jsx to the following:
 
 ```jsx
 import React from 'react'
@@ -321,6 +336,8 @@ class CatImage extends Component {
   //
   // Do this for any method which isn't a react component builtin (render, onComponentDidMount, etc...)
   // or the constructor.
+  //
+  // You will need the babel-preset-stage-0 package installed to do this.
   onClick = (event) => {
     // Toggle the value of usingPropSrc
     this.setState({usingPropSrc: !this.state.usingPropSrc})

@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import CatImage from './components/CatImage.jsx'
+import CatWrapper from './components/CatWrapper'
 
-ReactDOM.render(<CatImage />, document.getElementById('app'))
+ReactDOM.render(<CatWrapper />, document.getElementById('app'))
